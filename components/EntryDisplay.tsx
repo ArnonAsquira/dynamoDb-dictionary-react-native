@@ -24,7 +24,6 @@ interface EntryDisplayProps {
 }
 
 const EntryDisplay = ({ entry }: EntryDisplayProps) => {
-  console.log(entry);
   return (
     <View style={styles.container}>
       <Text>{entry.word}</Text>
