@@ -33,16 +33,22 @@ interface SearchBarProps {
 
 const SearchBar = ({ setEntriesList }: SearchBarProps) => {
   const [inputValue, setInputValue] = useState<string | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
   const handleSearch = async () => {
+    setLoading(true);
     try {
       const { data }: { data: IENtryItem[] } = await axios.get(
         `${baseUrl}/get/${inputValue}`
       );
+      if (data.length < 1) {
+        alert("no results found");
+      }
       setEntriesList(data);
     } catch (err) {
       console.log(err);
       alert("something went wrong");
     }
+    setLoading(false);
   };
   return (
     <View style={styles.container}>
@@ -50,6 +56,7 @@ const SearchBar = ({ setEntriesList }: SearchBarProps) => {
       <Pressable style={styles.searchButton} onPress={() => handleSearch()}>
         <Text>search</Text>
       </Pressable>
+      <Text>{loading ? "loading..." : null}</Text>
     </View>
   );
 };

@@ -3,7 +3,7 @@ import { Link } from "react-router-native";
 
 const ReturnButton = () => {
   return (
-    <View>
+    <View style={{ marginTop: 5, alignSelf: "flex-start" }}>
       <Link to="/">
         <Image
           style={{
