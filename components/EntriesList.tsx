@@ -1,6 +1,7 @@
 import { ScrollView, Text, StyleSheet, Pressable } from "react-native";
 import { Dispatch } from "react";
 import main from "../styles/main";
+import { Link } from "react-router-native";
 
 const styles = StyleSheet.create({
   wordOption: {
@@ -22,12 +23,13 @@ const EntriesList = ({ entries, setSelectedEntry }: EntriesListProps) => {
   return (
     <ScrollView>
       {entries.map((entry, i) => (
-        <Pressable onPress={() => setSelectedEntry(entry)}>
-          <Text key={i} style={styles.wordOption}>
-            {entry.word} {entry.speachType}
-          </Text>
+        <Pressable key={i}>
+          <Link to="/entry" onPress={() => setSelectedEntry(entry)}>
+            <Text style={styles.wordOption}>
+              {entry.word} {entry.speachType}
+            </Text>
+          </Link>
         </Pressable>
-        // <EntryDisplay entry={entry} />
       ))}
     </ScrollView>
   );

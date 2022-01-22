@@ -10,9 +10,9 @@ const styles = {
       bold: "bold" as "bold",
     },
     size: {
-      large: 3,
-      normal: 1,
-      small: 0.5,
+      large: 30,
+      normal: 20,
+      small: 20,
     },
   },
   dimensions: {
